@@ -30,7 +30,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
-        /* Enhanced Button Hover Effects */
+        /* Button Hover Effects */
         .btn-primary {
             position: relative;
             overflow: hidden;
@@ -58,7 +58,6 @@
         
         .btn-secondary {
             transition: all 0.3s ease;
-            position: relative;
         }
         .btn-secondary:hover {
             transform: translateY(-2px);
@@ -66,31 +65,17 @@
             background-color: #f3e8ff;
         }
         
-        /* List Item Hover Effects */
+        /* List Item Hover */
         .hover-list-item {
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
-            padding-left: 0;
         }
         .hover-list-item:hover {
             transform: translateX(8px);
             color: #7c3aed;
         }
-        .hover-list-item::before {
-            content: '→';
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            color: #7c3aed;
-        }
-        .hover-list-item:hover::before {
-            opacity: 1;
-            left: -15px;
-        }
         
-        /* Feature Card List Items */
         .feature-list-item {
             transition: all 0.3s ease;
             cursor: pointer;
@@ -103,78 +88,26 @@
             color: #7c3aed;
         }
         
-        /* Pricing Card Button Hover */
-        .pricing-btn {
+        /* Counter animation */
+        .counter {
+            font-size: 2.5rem;
+            font-weight: bold;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .pricing-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
         
-        /* Nav Link Hover */
-        .nav-link-hover {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .nav-link-hover::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        .nav-link-hover:hover::after {
-            width: 80%;
-        }
-        .nav-link-hover:hover {
-            color: #7c3aed;
-        }
-        
-        /* Footer Link Hover */
-        .footer-link {
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .footer-link:hover {
-            transform: translateX(5px);
-            color: white !important;
-        }
-        
-        /* Trust Bar Item Hover */
-        .trust-item {
+        /* Stats card */
+        .stat-card {
             transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
         }
-        .trust-item:hover {
-            transform: scale(1.1);
-            color: #7c3aed !important;
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
-        
-        /* CTA Button Hover */
-        .cta-button {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
-        }
-        
-        /* Social Proof Item Hover */
-        .social-proof-item {
-            transition: all 0.3s ease;
-        }
-        .social-proof-item:hover {
-            transform: scale(1.05);
+        .stat-card:hover .stat-number,
+        .stat-card:hover .stat-label {
+            color: white;
         }
         
         /* Modal */
@@ -235,7 +168,6 @@
             }
         }
         
-        /* Page transition effects */
         .page {
             display: none;
             animation: pageFadeIn 0.5s ease-out;
@@ -254,13 +186,9 @@
             }
         }
         
-        /* Active nav link */
         .nav-active {
             color: #7c3aed !important;
             font-weight: 600;
-        }
-        .nav-active::after {
-            width: 80% !important;
         }
         
         [data-aos] {
@@ -270,7 +198,6 @@
             pointer-events: auto;
         }
         
-        /* Mobile menu */
         .mobile-menu {
             display: none;
         }
@@ -283,24 +210,31 @@
             }
         }
         
-        /* Table row hover */
-        .comparison-row {
+        /* Interactive demo box */
+        .demo-box {
             transition: all 0.3s ease;
-            cursor: pointer;
         }
-        .comparison-row:hover {
-            background-color: #f9fafb;
-            transform: scale(1.01);
+        .demo-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        /* Dashboard card hover */
-        .dashboard-card {
+        /* Testimonial card */
+        .testimonial-card {
             transition: all 0.3s ease;
-            cursor: pointer;
         }
-        .dashboard-card:hover {
+        .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
@@ -357,19 +291,19 @@
                     <p class="text-2xl font-bold text-gray-800 mt-2">Your ConvoAI Dashboard</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="dashboard-card bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center transition hover:scale-105 cursor-pointer" onclick="showToast('You have processed 1,234 messages this month!')">
                         <p class="text-2xl font-bold text-purple-600">1,234</p>
                         <p class="text-sm text-gray-600">Messages Processed</p>
                     </div>
-                    <div class="dashboard-card bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center transition hover:scale-105 cursor-pointer" onclick="showToast('98% of queries are resolved by AI automatically!')">
                         <p class="text-2xl font-bold text-green-600">98%</p>
                         <p class="text-sm text-gray-600">AI Resolution Rate</p>
                     </div>
-                    <div class="dashboard-card bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center transition hover:scale-105 cursor-pointer" onclick="showToast('45 active conversations right now!')">
                         <p class="text-2xl font-bold text-blue-600">45</p>
                         <p class="text-sm text-gray-600">Active Conversations</p>
                     </div>
-                    <div class="dashboard-card bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center transition hover:scale-105 cursor-pointer" onclick="showToast('Your team has 3 members. Upgrade to add more!')">
                         <p class="text-2xl font-bold text-orange-600">3</p>
                         <p class="text-sm text-gray-600">Team Members</p>
                     </div>
@@ -391,18 +325,18 @@
                     </div>
                     <div class="hidden md:block ml-10 desktop-nav">
                         <div class="flex space-x-8">
-                            <a href="#" onclick="navigateTo('home'); return false;" class="nav-link-hover nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="home">Home</a>
-                            <a href="#" onclick="navigateTo('product'); return false;" class="nav-link-hover nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="product">Product</a>
-                            <a href="#" onclick="navigateTo('solutions'); return false;" class="nav-link-hover nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="solutions">Solutions</a>
-                            <a href="#" onclick="navigateTo('pricing'); return false;" class="nav-link-hover nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="pricing">Pricing</a>
-                            <a href="#" onclick="navigateTo('about'); return false;" class="nav-link-hover nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="about">About</a>
-                            <a href="#" onclick="navigateTo('contact'); return false;" class="nav-link-hover nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="contact">Contact</a>
+                            <a href="#" onclick="navigateTo('home'); return false;" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="home">Home</a>
+                            <a href="#" onclick="navigateTo('product'); return false;" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="product">Product</a>
+                            <a href="#" onclick="navigateTo('solutions'); return false;" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="solutions">Solutions</a>
+                            <a href="#" onclick="navigateTo('pricing'); return false;" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="pricing">Pricing</a>
+                            <a href="#" onclick="navigateTo('about'); return false;" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="about">About</a>
+                            <a href="#" onclick="navigateTo('contact'); return false;" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition" data-page="contact">Contact</a>
                         </div>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <span id="userEmailDisplay" class="text-sm text-gray-600 hidden md:inline"></span>
-                    <button id="authButton" onclick="openModal('signin')" class="text-gray-700 hover:text-purple-600 text-sm font-medium transition nav-link-hover">Sign In</button>
+                    <button id="authButton" onclick="openModal('signin')" class="text-gray-700 hover:text-purple-600 text-sm font-medium transition">Sign In</button>
                     <button id="trialButton" onclick="startTrial()" class="gradient-bg text-white px-4 py-2 rounded-lg text-sm font-medium btn-primary transition">Start Free Trial</button>
                     <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 transition hover:text-purple-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -424,12 +358,16 @@
         </div>
     </nav>
 
-    <!-- ==================== HOME PAGE ==================== -->
+    <!-- ==================== HOME PAGE (Enhanced with Interactive Sections) ==================== -->
     <div id="home-page" class="page">
+        <!-- Hero Section -->
         <section class="py-20 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold mb-4">
+                            🚀 AI-Powered Customer Engagement
+                        </div>
                         <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
                             The First 
                             <span class="gradient-text">Autonomous</span>
@@ -447,7 +385,7 @@
                             </button>
                         </div>
                         <div class="mt-8 flex items-center space-x-8">
-                            <div class="flex items-center social-proof-item cursor-pointer" onclick="showToast('Trusted by 500+ businesses worldwide!')">
+                            <div class="flex items-center cursor-pointer transition hover:scale-105" onclick="showToast('Trusted by 500+ businesses worldwide!')">
                                 <div class="flex -space-x-2">
                                     <img class="w-8 h-8 rounded-full border-2 border-white transition hover:scale-110" src="https://randomuser.me/api/portraits/women/1.jpg" alt="">
                                     <img class="w-8 h-8 rounded-full border-2 border-white transition hover:scale-110" src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
@@ -461,26 +399,32 @@
                         </div>
                     </div>
                     <div class="mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
-                        <div class="bg-gray-50 rounded-2xl p-6 shadow-xl transition hover:shadow-2xl">
+                        <div class="demo-box bg-gray-50 rounded-2xl p-6 shadow-xl transition">
                             <div class="bg-white rounded-xl p-4 shadow-sm">
                                 <div class="flex items-center space-x-3 mb-4">
                                     <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span class="text-sm font-medium text-gray-600">AI Agent Active</span>
+                                    <span class="text-sm font-medium text-gray-600">AI Agent Active - Try me!</span>
                                 </div>
-                                <div class="space-y-3" id="chatMessages">
+                                <div class="space-y-3 h-64 overflow-y-auto" id="chatMessages">
                                     <div class="flex items-start space-x-2">
                                         <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                                             <span class="text-purple-600 text-sm">🤖</span>
                                         </div>
                                         <div class="bg-gray-100 rounded-lg p-3 flex-1">
-                                            <p class="text-sm text-gray-800">Hi! I'm your AI agent. How can I help you today? I can qualify leads, answer questions, or process orders!</p>
+                                            <p class="text-sm text-gray-800">Hi! I'm your AI agent. How can I help you today? Try asking about pricing, features, or support!</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex space-x-2">
-                                        <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition">
+                                        <input type="text" id="chatInput" placeholder="Type your message here..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition">
                                         <button onclick="sendChatMessage()" class="gradient-bg text-white px-4 py-2 rounded-lg btn-primary transition">Send</button>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 mt-3">
+                                        <button onclick="setChatMessage('Tell me about pricing')" class="text-xs bg-gray-100 hover:bg-purple-100 text-gray-600 hover:text-purple-600 px-2 py-1 rounded transition">💲 Pricing</button>
+                                        <button onclick="setChatMessage('How does the AI work?')" class="text-xs bg-gray-100 hover:bg-purple-100 text-gray-600 hover:text-purple-600 px-2 py-1 rounded transition">🤖 AI Features</button>
+                                        <button onclick="setChatMessage('Can I integrate with my CRM?')" class="text-xs bg-gray-100 hover:bg-purple-100 text-gray-600 hover:text-purple-600 px-2 py-1 rounded transition">🔌 Integrations</button>
+                                        <button onclick="setChatMessage('Start free trial')" class="text-xs bg-gray-100 hover:bg-purple-100 text-gray-600 hover:text-purple-600 px-2 py-1 rounded transition">✨ Start Trial</button>
                                     </div>
                                 </div>
                             </div>
@@ -490,30 +434,213 @@
             </div>
         </section>
 
-        <div class="bg-gray-50 py-6" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+        <!-- Stats Section - Interactive -->
+        <div class="bg-gray-50 py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                    <span class="text-gray-400 font-semibold text-sm">POWERED BY LEADING INNOVATORS</span>
-                    <div class="flex flex-wrap justify-center gap-8 md:gap-12">
-                        <span class="text-gray-600 font-medium trust-item" onclick="showCompanyInfo('TechCorp')">TechCorp</span>
-                        <span class="text-gray-600 font-medium trust-item" onclick="showCompanyInfo('InnovateLabs')">InnovateLabs</span>
-                        <span class="text-gray-600 font-medium trust-item" onclick="showCompanyInfo('FutureStack')">FutureStack</span>
-                        <span class="text-gray-600 font-medium trust-item" onclick="showCompanyInfo('DataFlow')">DataFlow</span>
-                        <span class="text-gray-600 font-medium trust-item" onclick="showCompanyInfo('CloudNine')">CloudNine</span>
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-900">Trusted by Industry Leaders</h2>
+                    <p class="mt-2 text-gray-600">Join thousands of businesses already growing with ConvoAI</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="stat-card bg-white rounded-xl p-6 text-center shadow-lg transition cursor-pointer" onclick="showToast('10 Billion+ messages processed by our platform!')">
+                        <div class="counter text-3xl font-bold text-purple-600 stat-number" id="counter1">10B+</div>
+                        <p class="text-gray-600 mt-2 stat-label">Messages Processed</p>
+                    </div>
+                    <div class="stat-card bg-white rounded-xl p-6 text-center shadow-lg transition cursor-pointer" onclick="showToast('99.9% uptime guaranteed!')">
+                        <div class="counter text-3xl font-bold text-purple-600 stat-number">99.9%</div>
+                        <p class="text-gray-600 mt-2 stat-label">Uptime</p>
+                    </div>
+                    <div class="stat-card bg-white rounded-xl p-6 text-center shadow-lg transition cursor-pointer" onclick="showToast('Serving customers in 100+ countries!')">
+                        <div class="counter text-3xl font-bold text-purple-600 stat-number">100+</div>
+                        <p class="text-gray-600 mt-2 stat-label">Countries</p>
+                    </div>
+                    <div class="stat-card bg-white rounded-xl p-6 text-center shadow-lg transition cursor-pointer" onclick="showToast('4.8/5 rating on G2 from real users!')">
+                        <div class="counter text-3xl font-bold text-purple-600 stat-number">4.8/5</div>
+                        <p class="text-gray-600 mt-2 stat-label">Customer Rating</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="gradient-bg py-20" data-aos="zoom-in" data-aos-duration="800" data-aos-once="false">
+        <!-- Features Section -->
+        <div class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-gray-900">Powerful Features That Drive Results</h2>
+                    <p class="mt-4 text-xl text-gray-500">Everything you need in one intelligent platform</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('marketing')" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4 float-animation">
+                            <i data-lucide="megaphone" class="text-purple-600" width="28" height="28"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Marketing Automation</h3>
+                        <p class="text-gray-600 mb-4">Acquire and nurture leads with AI-powered campaigns that convert</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="feature-list-item">✓ Click-to-WhatsApp Ads</li>
+                            <li class="feature-list-item">✓ AI-powered lead qualification</li>
+                            <li class="feature-list-item">✓ 85% higher response rates</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('sales')" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4 float-animation" style="animation-delay: 0.5s;">
+                            <i data-lucide="users" class="text-purple-600" width="28" height="28"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Intelligent Sales Platform</h3>
+                        <p class="text-gray-600 mb-4">Close more deals with real-time lead qualification and AI assistance</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="feature-list-item">✓ Real-time lead qualification</li>
+                            <li class="feature-list-item">✓ Shared team inbox</li>
+                            <li class="feature-list-item">✓ 30% reduction in sales cycle</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('support')" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4 float-animation" style="animation-delay: 1s;">
+                            <i data-lucide="headphones" class="text-purple-600" width="28" height="28"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">24/7 AI Customer Support</h3>
+                        <p class="text-gray-600 mb-4">Delight customers with instant, accurate responses at any time</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="feature-list-item">✓ AI agents for instant answers</li>
+                            <li class="feature-list-item">✓ Smart ticket routing</li>
+                            <li class="feature-list-item">✓ 60% queries auto-resolved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Demo Section -->
+        <div class="bg-gradient-to-r from-purple-50 to-indigo-50 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-900">See ConvoAI in Action</h2>
+                    <p class="mt-2 text-gray-600">Watch how businesses are transforming their customer engagement</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-lg transition hover:scale-105 cursor-pointer" onclick="showToast('Watch e-commerce demo video')">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="shopping-cart" class="text-purple-600" width="24" height="24"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900">E-commerce</h3>
+                            <p class="text-sm text-gray-600 mt-2">Automate order updates & support</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-lg transition hover:scale-105 cursor-pointer" onclick="showToast('Watch SaaS demo video')">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="cloud" class="text-purple-600" width="24" height="24"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900">SaaS Companies</h3>
+                            <p class="text-sm text-gray-600 mt-2">Qualify leads & onboard users</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-lg transition hover:scale-105 cursor-pointer" onclick="showToast('Watch healthcare demo video')">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="heart" class="text-pur-600" width="24" height="24"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900">Healthcare</h3>
+                            <p class="text-sm text-gray-600 mt-2">Patient engagement & appointments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-gray-900">What Our Customers Say</h2>
+                    <p class="mt-4 text-xl text-gray-500">Join 500+ businesses already growing with ConvoAI</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg cursor-pointer" onclick="showTestimonial('michael')" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                        </div>
+                        <p class="text-gray-700 mb-4">"ConvoAI helped us reduce response time from 3 hours to 3 seconds. Our customer satisfaction has never been higher!"</p>
+                        <div class="flex items-center space-x-3">
+                            <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/portraits/men/5.jpg" alt="">
+                            <div>
+                                <p class="font-semibold text-gray-900">Michael Chen</p>
+                                <p class="text-sm text-gray-500">CEO, TechFlow</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg cursor-pointer" onclick="showTestimonial('sarah')" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                        </div>
+                        <p class="text-gray-700 mb-4">"The AI agents automatically qualify 60% of our leads before they reach sales. Game-changer for our team!"</p>
+                        <div class="flex items-center space-x-3">
+                            <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/portraits/women/8.jpg" alt="">
+                            <div>
+                                <p class="font-semibold text-gray-900">Sarah Johnson</p>
+                                <p class="text-sm text-gray-500">Marketing Director, GrowthLabs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg cursor-pointer" onclick="showTestimonial('david')" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                            <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
+                        </div>
+                        <p class="text-gray-700 mb-4">"Setup was incredibly easy. Within hours, we had AI handling customer support across WhatsApp and Instagram."</p>
+                        <div class="flex items-center space-x-3">
+                            <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/portraits/men/12.jpg" alt="">
+                            <div>
+                                <p class="font-semibold text-gray-900">David Kim</p>
+                                <p class="text-sm text-gray-500">Operations Lead, ServiceHub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Bar -->
+        <div class="bg-gray-50 py-8" data-aos="fade-up">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-6">
+                    <p class="text-gray-500 font-semibold">TRUSTED BY INDUSTRY LEADERS</p>
+                </div>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                    <span class="text-gray-400 font-semibold text-sm">POWERED BY LEADING INNOVATORS</span>
+                    <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                        <span class="text-gray-600 font-medium trust-item cursor-pointer transition hover:scale-110 hover:text-purple-600" onclick="showCompanyInfo('TechCorp')">TechCorp</span>
+                        <span class="text-gray-600 font-medium trust-item cursor-pointer transition hover:scale-110 hover:text-purple-600" onclick="showCompanyInfo('InnovateLabs')">InnovateLabs</span>
+                        <span class="text-gray-600 font-medium trust-item cursor-pointer transition hover:scale-110 hover:text-purple-600" onclick="showCompanyInfo('FutureStack')">FutureStack</span>
+                        <span class="text-gray-600 font-medium trust-item cursor-pointer transition hover:scale-110 hover:text-purple-600" onclick="showCompanyInfo('DataFlow')">DataFlow</span>
+                        <span class="text-gray-600 font-medium trust-item cursor-pointer transition hover:scale-110 hover:text-purple-600" onclick="showCompanyInfo('CloudNine')">CloudNine</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA Section -->
+        <div class="gradient-bg py-20" data-aos="zoom-in">
             <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-white mb-4">Ready to transform your customer engagement?</h2>
+                <h2 class="text-4xl font-bold text-white mb-4">Ready to Transform Your Customer Engagement?</h2>
                 <p class="text-xl text-purple-100 mb-8">Join 500+ businesses already using ConvoAI to automate and scale</p>
                 <div class="flex justify-center space-x-4">
-                    <button onclick="startTrial()" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold cta-button transition transform hover:scale-105">
+                    <button onclick="startTrial()" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-xl">
                         Start Free Trial
                     </button>
-                    <button onclick="navigateTo('contact')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold cta-button transition transform hover:scale-105 hover:bg-white hover:text-purple-600">
+                    <button onclick="navigateTo('contact')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:bg-white hover:text-purple-600">
                         Contact Sales
                     </button>
                 </div>
@@ -522,17 +649,18 @@
         </div>
     </div>
 
+    <!-- Other pages (product, solutions, pricing, about, contact) remain the same as previous version -->
     <!-- ==================== PRODUCT PAGE ==================== -->
     <div id="product-page" class="page">
         <div class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <h1 class="text-5xl font-bold text-gray-900 mb-4">Our Products</h1>
                     <p class="text-xl text-gray-500">Everything you need to engage, convert, and support customers</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('marketing')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
-                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 transition group-hover:scale-110">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('marketing')" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                             <i data-lucide="megaphone" class="text-purple-600" width="24" height="24"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-3">For Marketing</h3>
@@ -544,7 +672,7 @@
                             <li class="feature-list-item">✓ Smart retargeting campaigns</li>
                         </ul>
                     </div>
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('sales')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('sales')" data-aos="fade-up" data-aos-delay="200">
                         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                             <i data-lucide="users" class="text-purple-600" width="24" height="24"></i>
                         </div>
@@ -557,7 +685,7 @@
                             <li class="feature-list-item">✓ AI-powered lead scoring</li>
                         </ul>
                     </div>
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('support')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('support')" data-aos="fade-up" data-aos-delay="300">
                         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                             <i data-lucide="headphones" class="text-purple-600" width="24" height="24"></i>
                         </div>
@@ -579,15 +707,15 @@
     <div id="solutions-page" class="page">
         <div class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <h1 class="text-5xl font-bold text-gray-900 mb-4">Why Choose ConvoAI?</h1>
                     <p class="text-xl text-gray-500">The intelligent choice for modern businesses</p>
                 </div>
                 <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                    <div data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
+                    <div data-aos="fade-right">
                         <div class="space-y-6">
                             <div class="flex items-start space-x-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition" onclick="showBenefit('unified')">
-                                <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1 transition group-hover:scale-110">
+                                <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <i data-lucide="check" class="text-purple-600" width="14" height="14"></i>
                                 </div>
                                 <div>
@@ -615,8 +743,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
-                        <div class="bg-white rounded-2xl p-8 shadow-lg transition hover:shadow-2xl">
+                    <div class="mt-12 lg:mt-0" data-aos="fade-left">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg">
                             <table class="w-full">
                                 <thead>
                                     <tr class="border-b-2 border-gray-200">
@@ -626,28 +754,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="border-b border-gray-200 comparison-row">
+                                    <tr class="border-b border-gray-200 transition hover:bg-gray-50">
                                         <td class="py-3 text-gray-600">AI Agent Autonomy</td>
                                         <td class="py-3 text-green-600">✓ Full autonomy</td>
                                         <td class="py-3 text-red-500">✗ Rule-based only</td>
                                     </tr>
-                                    <tr class="border-b border-gray-200 comparison-row">
+                                    <tr class="border-b border-gray-200 transition hover:bg-gray-50">
                                         <td class="py-3 text-gray-600">Multi-channel Support</td>
                                         <td class="py-3 text-green-600">✓ 10+ channels</td>
                                         <td class="py-3 text-red-500">✗ WhatsApp only</td>
                                     </tr>
-                                    <tr class="border-b border-gray-200 comparison-row">
+                                    <tr class="border-b border-gray-200 transition hover:bg-gray-50">
                                         <td class="py-3 text-gray-600">Complex Workflows</td>
                                         <td class="py-3 text-green-600">✓ Unlimited</td>
                                         <td class="py-3 text-red-500">✗ Limited</td>
                                     </tr>
-                                    <tr class="comparison-row">
+                                    <tr class="transition hover:bg-gray-50">
                                         <td class="py-3 text-gray-600">Setup Fee</td>
                                         <td class="py-3 text-green-600">✓ $0</td>
                                         <td class="py-3 text-red-500">✗ Usually $500+</td>
                                     </tr>
                                 </tbody>
-                            </table>
+                             </table>
                         </div>
                     </div>
                 </div>
@@ -659,12 +787,12 @@
     <div id="pricing-page" class="page">
         <div class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <h1 class="text-5xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h1>
                     <p class="text-xl text-gray-500">Start free, scale as you grow. No hidden fees.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Free</h3>
                         <p class="text-gray-500 mb-4">Perfect for small businesses</p>
                         <div class="mb-6">
@@ -685,11 +813,11 @@
                                 <span>Email support</span>
                             </li>
                         </ul>
-                        <button onclick="selectPlan('free')" class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-lg font-semibold pricing-btn transition hover:bg-purple-50">
+                        <button onclick="selectPlan('free')" class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-lg font-semibold transition hover:bg-purple-50 hover:scale-105">
                             Get Started
                         </button>
                     </div>
-                    <div class="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-600 transform scale-105 card-hover" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-600 transform scale-105 card-hover" data-aos="fade-up" data-aos-delay="200">
                         <div class="absolute top-0 right-8 bg-purple-600 text-white px-3 py-1 rounded-b-lg text-sm font-semibold">
                             POPULAR
                         </div>
@@ -717,11 +845,11 @@
                                 <span>Analytics dashboard</span>
                             </li>
                         </ul>
-                        <button onclick="selectPlan('growth')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold pricing-btn transition">
+                        <button onclick="selectPlan('growth')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold transition hover:scale-105">
                             Start Free Trial
                         </button>
                     </div>
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
                         <p class="text-gray-500 mb-4">For large teams with custom needs</p>
                         <div class="mb-6">
@@ -745,12 +873,12 @@
                                 <span>On-premise deployment</span>
                             </li>
                         </ul>
-                        <button onclick="contactSales()" class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-lg font-semibold pricing-btn transition hover:bg-purple-50">
+                        <button onclick="contactSales()" class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-lg font-semibold transition hover:bg-purple-50 hover:scale-105">
                             Contact Sales
                         </button>
                     </div>
                 </div>
-                <p class="text-center text-gray-500 text-sm mt-8" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">*Pay only for what you use. No setup fee. Cancel anytime.</p>
+                <p class="text-center text-gray-500 text-sm mt-8">*Pay only for what you use. No setup fee. Cancel anytime.</p>
             </div>
         </div>
     </div>
@@ -759,24 +887,24 @@
     <div id="about-page" class="page">
         <div class="py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <h1 class="text-5xl font-bold text-gray-900 mb-4">About ConvoAI</h1>
                     <p class="text-xl text-gray-500">Building the future of customer interaction</p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 transition hover:shadow-2xl" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 transition hover:shadow-2xl" data-aos="fade-up">
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
                     <p class="text-gray-600 leading-relaxed">To empower businesses with autonomous AI agents that transform customer engagement, making every interaction seamless, intelligent, and scalable.</p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 transition hover:shadow-2xl" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
+                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 transition hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
                     <p class="text-gray-600 leading-relaxed">Create a world where AI and humans work together seamlessly, automating routine tasks while enabling meaningful, personalized customer relationships.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 transition hover:scale-105 cursor-pointer" data-aos="fade-right" data-aos-duration="600" data-aos-once="false" onclick="showToast('We serve 500+ businesses worldwide!')">
+                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 transition hover:scale-105 cursor-pointer" onclick="showToast('We serve 500+ businesses worldwide!')" data-aos="fade-right">
                         <h3 class="text-3xl font-bold text-gray-900 mb-2">500+</h3>
                         <p class="text-gray-600">Businesses Trust Us</p>
                     </div>
-                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 transition hover:scale-105 cursor-pointer" data-aos="fade-left" data-aos-duration="600" data-aos-once="false" onclick="showToast('98% customer satisfaction rate!')">
+                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 transition hover:scale-105 cursor-pointer" onclick="showToast('98% customer satisfaction rate!')" data-aos="fade-left">
                         <h3 class="text-3xl font-bold text-gray-900 mb-2">98%</h3>
                         <p class="text-gray-600">Customer Satisfaction</p>
                     </div>
@@ -789,12 +917,12 @@
     <div id="contact-page" class="page">
         <div class="py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <h1 class="text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
                     <p class="text-xl text-gray-500">Get in touch with our team</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-2xl shadow-lg p-8 transition hover:shadow-2xl" data-aos="fade-right" data-aos-duration="600" data-aos-once="false">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 transition hover:shadow-2xl" data-aos="fade-right">
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
                         <form id="contactForm" onsubmit="handleContact(event)">
                             <div class="mb-4">
@@ -814,7 +942,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="space-y-6" data-aos="fade-left" data-aos-duration="600" data-aos-once="false">
+                    <div class="space-y-6" data-aos="fade-left">
                         <div class="bg-white rounded-2xl shadow-lg p-8 transition hover:shadow-2xl">
                             <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
                             <div class="space-y-4">
@@ -849,35 +977,35 @@
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8">
-                <div data-aos="fade-right" data-aos-duration="600" data-aos-once="false">
+                <div data-aos="fade-right">
                     <h3 class="text-2xl font-bold gradient-text mb-4">ConvoAI</h3>
                     <p class="text-gray-400 text-sm">The first autonomous customer interaction platform.</p>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
+                <div data-aos="fade-up" data-aos-delay="100">
                     <h4 class="font-semibold mb-4">Product</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li class="footer-link cursor-pointer" onclick="navigateTo('product')">Features</li>
-                        <li class="footer-link cursor-pointer" onclick="navigateTo('pricing')">Pricing</li>
-                        <li class="footer-link cursor-pointer" onclick="showIntegrations()">Integrations</li>
-                        <li class="footer-link cursor-pointer" onclick="showAPIDocs()">API Docs</li>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="navigateTo('product')">Features</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="navigateTo('pricing')">Pricing</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showIntegrations()">Integrations</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showAPIDocs()">API Docs</li>
                     </ul>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
+                <div data-aos="fade-up" data-aos-delay="200">
                     <h4 class="font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li class="footer-link cursor-pointer" onclick="navigateTo('about')">About Us</li>
-                        <li class="footer-link cursor-pointer" onclick="showBlog()">Blog</li>
-                        <li class="footer-link cursor-pointer" onclick="showCareers()">Careers</li>
-                        <li class="footer-link cursor-pointer" onclick="showPress()">Press</li>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="navigateTo('about')">About Us</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showBlog()">Blog</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showCareers()">Careers</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showPress()">Press</li>
                     </ul>
                 </div>
-                <div data-aos="fade-left" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
+                <div data-aos="fade-left" data-aos-delay="300">
                     <h4 class="font-semibold mb-4">Support</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li class="footer-link cursor-pointer" onclick="showHelpCenter()">Help Center</li>
-                        <li class="footer-link cursor-pointer" onclick="navigateTo('contact')">Contact Us</li>
-                        <li class="footer-link cursor-pointer" onclick="showStatus()">Status</li>
-                        <li class="footer-link cursor-pointer" onclick="showSecurity()">Security</li>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showHelpCenter()">Help Center</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="navigateTo('contact')">Contact Us</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showStatus()">Status</li><br>
+                        <li class="footer-link cursor-pointer transition hover:text-white hover:translate-x-1 inline-block" onclick="showSecurity()">Security</li>
                     </ul>
                 </div>
             </div>
@@ -888,11 +1016,9 @@
     </footer>
 
     <script>
-        // User authentication state
         let currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null;
         let authMode = 'signin';
 
-        // Initialize AOS
         AOS.init({
             duration: 800,
             once: false,
@@ -903,10 +1029,8 @@
             easing: 'ease-out-cubic'
         });
         
-        // Initialize Lucide icons
         setTimeout(() => lucide.createIcons(), 100);
 
-        // Page navigation system
         function navigateTo(pageName) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active-page');
@@ -1105,6 +1229,11 @@
             showToast('Demo video coming soon! Check your email for updates.');
         }
 
+        function setChatMessage(message) {
+            document.getElementById('chatInput').value = message;
+            sendChatMessage();
+        }
+
         function sendChatMessage() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
@@ -1114,7 +1243,7 @@
             const chatMessages = document.getElementById('chatMessages');
             
             const userMessageDiv = document.createElement('div');
-            userMessageDiv.className = 'flex items-start space-x-2';
+            userMessageDiv.className = 'flex items-start space-x-2 mb-3';
             userMessageDiv.innerHTML = `
                 <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <span class="text-blue-600 text-sm">👤</span>
@@ -1127,26 +1256,38 @@
             
             setTimeout(() => {
                 const aiResponseDiv = document.createElement('div');
-                aiResponseDiv.className = 'flex items-start space-x-2';
-                const responses = [
-                    "Great question! Let me help you with that.",
-                    "I understand. Based on your query, I'd recommend checking out our Growth plan.",
-                    "Thanks for reaching out! Our AI agents can handle this automatically.",
-                    "I'll connect you with our sales team right away!",
-                    "This is perfect! Our platform can definitely solve this for you."
-                ];
-                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                aiResponseDiv.className = 'flex items-start space-x-2 mb-3';
+                let response = "";
+                
+                if (message.toLowerCase().includes('pricing') || message.toLowerCase().includes('price')) {
+                    response = "Great question! We have three plans: Free ($0/month), Growth ($49/month), and Enterprise (custom pricing). Would you like me to help you choose the right plan?";
+                } else if (message.toLowerCase().includes('ai') || message.toLowerCase().includes('feature')) {
+                    response = "Our AI agents are truly autonomous! They understand context, make decisions, and execute complex workflows. Want to see a demo of our AI in action?";
+                } else if (message.toLowerCase().includes('integrat')) {
+                    response = "Yes! ConvoAI integrates with 100+ tools including Salesforce, HubSpot, Shopify, and many more. What CRM or tool are you currently using?";
+                } else if (message.toLowerCase().includes('trial')) {
+                    response = "Excellent! I'll help you start your free trial. Just click the 'Start Free Trial' button above, and you'll get 14 days of full access to our Growth plan!";
+                } else {
+                    const responses = [
+                        "Thanks for your interest! Our platform can definitely help with that. Would you like to schedule a demo?",
+                        "That's a great question! Our AI agents can handle this automatically. Would you like to learn more?",
+                        "I can help with that! Let me connect you with our sales team for personalized assistance.",
+                        "Great question! Many of our customers have similar needs. Would you like to see a case study?"
+                    ];
+                    response = responses[Math.floor(Math.random() * responses.length)];
+                }
+                
                 aiResponseDiv.innerHTML = `
                     <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                         <span class="text-purple-600 text-sm">🤖</span>
                     </div>
                     <div class="bg-gray-100 rounded-lg p-3 flex-1">
-                        <p class="text-sm text-gray-800">${randomResponse}</p>
+                        <p class="text-sm text-gray-800">${response}</p>
                     </div>
                 `;
                 chatMessages.appendChild(aiResponseDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
+            }, 500);
             
             input.value = '';
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1154,9 +1295,9 @@
 
         function showFeatureDetails(feature) {
             const messages = {
-                marketing: 'Our marketing features include Click-to-WhatsApp ads, AI lead qualification, and smart retargeting campaigns!',
-                sales: 'Sales features include real-time lead qualification, shared team inbox, and AI-powered lead scoring!',
-                support: 'Support features include 24/7 AI agents, smart ticket routing, and multi-language support!'
+                marketing: '🎯 Marketing Features: Click-to-WhatsApp ads, AI lead qualification, 85% higher response rates, and smart retargeting campaigns!',
+                sales: '💼 Sales Features: Real-time lead qualification, shared team inbox, 30% reduction in sales cycle, and AI-powered lead scoring!',
+                support: '🎧 Support Features: 24/7 AI agents, smart ticket routing, 60% auto-resolution rate, and multi-language support!'
             };
             showToast(messages[feature]);
         }
@@ -1171,17 +1312,26 @@
         }
 
         function showCompanyInfo(company) {
-            showToast(`${company} uses ConvoAI to automate their customer engagement!`);
+            showToast(`${company} uses ConvoAI to automate their customer engagement and has seen 3x ROI!`);
         }
 
-        function showIntegrations() { showToast('ConvoAI integrates with 100+ tools including Salesforce, HubSpot, Shopify, and more!'); }
-        function showAPIDocs() { showToast('API documentation available at docs.convoai.com'); }
-        function showBlog() { showToast('Check our blog for latest updates and insights!'); }
-        function showCareers() { showToast('We\'re hiring! Visit careers.convoai.com'); }
-        function showPress() { showToast('Press kit available at press.convoai.com'); }
-        function showHelpCenter() { showToast('Visit our help center at help.convoai.com'); }
-        function showStatus() { showToast('All systems operational. Status page: status.convoai.com'); }
-        function showSecurity() { showToast('Enterprise-grade security with GDPR compliance.'); }
+        function showTestimonial(person) {
+            const testimonials = {
+                michael: 'Michael Chen, CEO of TechFlow: "ConvoAI helped us reduce response time from 3 hours to 3 seconds. Our customer satisfaction has never been higher! We saw a 40% increase in sales within the first month."',
+                sarah: 'Sarah Johnson, Marketing Director at GrowthLabs: "The AI agents automatically qualify 60% of our leads before they reach sales. Game-changer for our team! We reduced our CAC by 45%."',
+                david: 'David Kim, Operations Lead at ServiceHub: "Setup was incredibly easy. Within hours, we had AI handling customer support across WhatsApp and Instagram. Now 80% of queries are resolved automatically!"'
+            };
+            showToast(testimonials[person]);
+        }
+
+        function showIntegrations() { showToast('ConvoAI integrates with 100+ tools including Salesforce, HubSpot, Shopify, WordPress, and more!'); }
+        function showAPIDocs() { showToast('API documentation available at docs.convoai.com. RESTful API with webhook support.'); }
+        function showBlog() { showToast('Check our blog for latest updates, case studies, and AI insights!'); }
+        function showCareers() { showToast('We\'re hiring! Join our team of innovators. Visit careers.convoai.com'); }
+        function showPress() { showToast('Press kit available at press.convoai.com. Contact pr@convoai.com for media inquiries.'); }
+        function showHelpCenter() { showToast('Visit our help center at help.convoai.com for tutorials, guides, and FAQs.'); }
+        function showStatus() { showToast('All systems operational. 99.9% uptime over the past 90 days. Status page: status.convoai.com'); }
+        function showSecurity() { showToast('Enterprise-grade security with GDPR compliance, SOC2 Type II certified, and end-to-end encryption.'); }
 
         updateAuthUI();
         handleInitialPage();
