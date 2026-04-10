@@ -85,9 +85,16 @@
                 opacity: 1;
             }
         }
-        .btn-disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        /* AOS animation fixes */
+        [data-aos] {
+            pointer-events: none;
+        }
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+        /* Ensure animations are smooth */
+        .aos-init {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
@@ -198,7 +205,7 @@
     <section id="home" class="py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-                <div data-aos="fade-right">
+                <div data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
                     <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
                         The First 
                         <span class="gradient-text">Autonomous</span>
@@ -229,7 +236,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 lg:mt-0" data-aos="fade-left">
+                <div class="mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
                     <div class="bg-gray-50 rounded-2xl p-6 shadow-xl">
                         <div class="bg-white rounded-xl p-4 shadow-sm">
                             <div class="flex items-center space-x-3 mb-4">
@@ -260,7 +267,7 @@
     </section>
 
     <!-- Trust Bar -->
-    <div class="bg-gray-50 py-6">
+    <div class="bg-gray-50 py-6" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                 <span class="text-gray-400 font-semibold text-sm">POWERED BY LEADING INNOVATORS</span>
@@ -278,12 +285,12 @@
     <!-- Product Section -->
     <section id="product" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
                 <h2 class="text-4xl font-bold text-gray-900">One Platform. Infinite Possibilities.</h2>
                 <p class="mt-4 text-xl text-gray-500">Everything you need to engage, convert, and support customers</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('marketing')" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('marketing')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
                     <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                         <i data-lucide="megaphone" class="text-purple-600" width="24" height="24"></i>
                     </div>
@@ -296,7 +303,7 @@
                         <li>✓ Smart retargeting campaigns</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('sales')" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('sales')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
                     <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                         <i data-lucide="users" class="text-purple-600" width="24" height="24"></i>
                     </div>
@@ -309,7 +316,7 @@
                         <li>✓ AI-powered lead scoring</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('support')" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showFeatureDetails('support')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
                     <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                         <i data-lucide="headphones" class="text-purple-600" width="24" height="24"></i>
                     </div>
@@ -330,7 +337,7 @@
     <section id="solutions" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                <div data-aos="fade-right">
+                <div data-aos="fade-right" data-aos-duration="800" data-aos-once="false">
                     <h2 class="text-4xl font-bold text-gray-900">Why choose ConvoAI over basic WhatsApp tools?</h2>
                     <div class="mt-8 space-y-6">
                         <div class="flex items-start space-x-3 cursor-pointer hover:bg-gray-100 p-3 rounded-lg transition" onclick="showBenefit('unified')">
@@ -362,7 +369,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 lg:mt-0" data-aos="fade-left">
+                <div class="mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="800" data-aos-once="false">
                     <div class="bg-white rounded-2xl p-8 shadow-lg">
                         <table class="w-full">
                             <thead>
@@ -404,12 +411,12 @@
     <!-- Pricing Section -->
     <section id="pricing" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
                 <h2 class="text-4xl font-bold text-gray-900">Simple, Transparent Pricing</h2>
                 <p class="mt-4 text-xl text-gray-500">Start free, scale as you grow. No hidden fees.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
                     <h3 class="text-2xl font-bold text-gray-900 mb-2">Free</h3>
                     <p class="text-gray-500 mb-4">Perfect for small businesses</p>
                     <div class="mb-6">
@@ -434,7 +441,7 @@
                         Get Started
                     </button>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-600 transform scale-105 card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-600 transform scale-105 card-hover" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
                     <div class="absolute top-0 right-8 bg-purple-600 text-white px-3 py-1 rounded-b-lg text-sm font-semibold">
                         POPULAR
                     </div>
@@ -466,7 +473,7 @@
                         Start Free Trial
                     </button>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
                     <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
                     <p class="text-gray-500 mb-4">For large teams with custom needs</p>
                     <div class="mb-6">
@@ -495,19 +502,19 @@
                     </button>
                 </div>
             </div>
-            <p class="text-center text-gray-500 text-sm mt-8">*Pay only for what you use. No setup fee. Cancel anytime.</p>
+            <p class="text-center text-gray-500 text-sm mt-8" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">*Pay only for what you use. No setup fee. Cancel anytime.</p>
         </div>
     </section>
 
     <!-- Testimonials -->
     <div class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="600" data-aos-once="false">
                 <h2 class="text-4xl font-bold text-gray-900">Loved by 500+ Businesses</h2>
                 <p class="mt-4 text-xl text-gray-500">See what our customers are saying</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showTestimonial('michael')" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showTestimonial('michael')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
                     <div class="flex text-yellow-400 mb-4">
                         <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
                         <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
@@ -524,7 +531,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showTestimonial('sarah')" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showTestimonial('sarah')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
                     <div class="flex text-yellow-400 mb-4">
                         <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
                         <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
@@ -541,7 +548,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showTestimonial('david')" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover cursor-pointer" onclick="showTestimonial('david')" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
                     <div class="flex text-yellow-400 mb-4">
                         <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
                         <i data-lucide="star" fill="currentColor" width="20" height="20"></i>
@@ -563,7 +570,7 @@
     </div>
 
     <!-- CTA Section -->
-    <div class="gradient-bg py-20">
+    <div class="gradient-bg py-20" data-aos="zoom-in" data-aos-duration="800" data-aos-once="false">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-white mb-4">Ready to transform your customer engagement?</h2>
             <p class="text-xl text-purple-100 mb-8">Join 500+ businesses already using ConvoAI to automate and scale</p>
@@ -583,11 +590,11 @@
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8">
-                <div>
+                <div data-aos="fade-right" data-aos-duration="600" data-aos-once="false">
                     <h3 class="text-2xl font-bold gradient-text mb-4">ConvoAI</h3>
                     <p class="text-gray-400 text-sm">The first autonomous customer interaction platform.</p>
                 </div>
-                <div>
+                <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-once="false">
                     <h4 class="font-semibold mb-4">Product</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li class="cursor-pointer hover:text-white" onclick="scrollToSection('product')">Features</li>
@@ -596,7 +603,7 @@
                         <li class="cursor-pointer hover:text-white" onclick="showAPIDocs()">API Docs</li>
                     </ul>
                 </div>
-                <div>
+                <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="false">
                     <h4 class="font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li class="cursor-pointer hover:text-white" onclick="showAbout()">About Us</li>
@@ -605,7 +612,7 @@
                         <li class="cursor-pointer hover:text-white" onclick="showPress()">Press</li>
                     </ul>
                 </div>
-                <div>
+                <div data-aos="fade-left" data-aos-duration="600" data-aos-delay="300" data-aos-once="false">
                     <h4 class="font-semibold mb-4">Support</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li class="cursor-pointer hover:text-white" onclick="showHelpCenter()">Help Center</li>
@@ -626,8 +633,23 @@
         let currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null;
         let authMode = 'signin';
 
-        // Initialize AOS and Icons
-        AOS.init({ duration: 1000, once: true });
+        // Initialize AOS with refresh to detect elements on scroll
+        AOS.init({
+            duration: 800,
+            once: false,  // Changed to false so animations trigger every time
+            mirror: true,  // Mirror animations on scroll up
+            offset: 50,    // Offset from top to trigger animation
+            throttleDelay: 99,
+            debounceDelay: 50,
+            easing: 'ease-out-cubic'
+        });
+        
+        // Refresh AOS on scroll to ensure elements re-animate
+        window.addEventListener('scroll', function() {
+            AOS.refresh();
+        });
+
+        // Initialize Lucide icons
         lucide.createIcons();
 
         // Update UI based on auth state
@@ -899,6 +921,10 @@
             const element = document.getElementById(sectionId);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Refresh AOS after scroll to ensure animations trigger
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 500);
             }
         }
 
@@ -910,6 +936,11 @@
             if (e.key === 'Enter') {
                 sendChatMessage();
             }
+        });
+
+        // Force AOS to refresh after page load
+        window.addEventListener('load', function() {
+            AOS.refresh();
         });
     </script>
 </body>
